@@ -27,7 +27,6 @@ namespace WpfApp3
                             Age = int.Parse(fields[1]),
                             Summapokupok = Double.Parse(fields[2]),
                             Data = DateTime.Parse(fields[3]),
-                            //Data = DateTime.ParseExact(fields[4], "yyyy-MM-dd", CultureInfo.InvariantCulture),
                             City = fields[4],
                             Magazin = fields[5]
                         }

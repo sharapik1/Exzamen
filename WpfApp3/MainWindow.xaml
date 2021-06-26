@@ -98,7 +98,7 @@
             Binding="{Binding Summapokupok}"/>
                 <DataGridTextColumn
             Header="Дата покупки"
-            Binding="{Binding Data}"/>
+            Binding="{Binding DateString}"/>
                 <DataGridTextColumn
             Header="Город"
             Binding="{Binding City}"/>
