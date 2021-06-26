@@ -1,0 +1,113 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- типа логотип компании -->
+        <Image 
+            Source="./Photo/pokupateliphoto.jpg" 
+            Grid.RowSpan="2"/>
+
+        <StackPanel 
+        Orientation="Vertical"
+        Grid.RowSpan="3"
+        VerticalAlignment="Bottom">
+            <Button 
+            x:Name="ExitButton"
+            Content="Выход" 
+            Click="ExitButton_Click"
+            Height="50"/>
+        </StackPanel>
+
+        <WrapPanel
+        Orientation="Horizontal"
+        Grid.Column="1"
+        MinHeight="50">
+            <Label
+            Content="Город:"
+            VerticalAlignment="Center"/>
+            <ComboBox
+                    Name="CityFilterComboBox"
+                    SelectionChanged="CityFilterComboBox_SelectionChanged"
+                    VerticalAlignment="Center"
+                    MinWidth="100"
+                    SelectedIndex="0"
+                    ItemsSource="{Binding CityList}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label
+                            Content="{Binding Title}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label 
+                Content="Искать" 
+                VerticalAlignment="Center"/>
+            <TextBox
+                Width="200"
+                VerticalAlignment="Center"
+                x:Name="SearchFilterTextBox" 
+                KeyUp="SearchFilter_KeyUp"/>
+            <Label 
+                Content="Сумма покупки:" 
+                VerticalAlignment="Center"/>
+            <RadioButton
+                GroupName="Summapokupok"
+                Tag="1"
+                Content="по возрастанию"
+                IsChecked="True"
+                Checked="RadioButton_Checked"
+                VerticalAlignment="Center"/>
+            <RadioButton
+                GroupName="Summapokupok"
+                Tag="2"
+                Content="по убыванию"
+                Checked="RadioButton_Checked"
+                VerticalAlignment="Center"/>
+
+        </WrapPanel>
+        <DataGrid
+    Grid.Row="1"
+    Grid.Column="1"
+    CanUserAddRows="False"
+    AutoGenerateColumns="False"
+    ItemsSource="{Binding PokupateliList}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+            Header="Имя"
+            Binding="{Binding Name}"/>
+                <DataGridTextColumn
+            Header="Возраст"
+            Binding="{Binding Age}"/>
+                <DataGridTextColumn
+            Header="Сумма покупок"
+            Binding="{Binding Summapokupok}"/>
+                <DataGridTextColumn
+            Header="Дата покупки"
+            Binding="{Binding Data}"/>
+                <DataGridTextColumn
+            Header="Город"
+            Binding="{Binding City}"/>
+                <DataGridTextColumn
+            Header="Магазин"
+            Binding="{Binding Magazin}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+
+
+</Window>
